@@ -1,17 +1,13 @@
-server:
-  id: 1
-  type: ${SERVER_TYPE:prod}
-
 spring:
   datasource:
-    url: ${SPRING_DATASOURCE_URL:jdbc:mysql://localhost:3306/gist}
+    url: ${SPRING_DATASOURCE_URL:jdbc:postgresql://localhost:5433/gist}
     username: ${SPRING_DATASOURCE_USERNAME:gist}
     password: ${SPRING_DATASOURCE_PASSWORD:password}
     driver-class-name: org.postgresql.Driver
 
   jpa:
     hibernate:
-      ddl-auto: ${RESTART:create}
+      ddl-auto: ${RESTART:none}
       auto_quote_keyword: true
 
     properties:
@@ -40,9 +36,7 @@ management:
       exposure:
         include: "*"
 
-jwt:
-  secret: ${JWT_SECRET:AGVeqC3DaElzFlY3JKdEtlYLJldEtMNOeBNlY3JldEtleQ==}
-
-crypto:
-  secret-key: ${CRYPTO_SECRET_KEY:12345678901234567890123456789012}
-  init-vector: ${CRYPTO_INIT_VECTOR:agentTest1234567}
+hospital:
+  api:
+    base-url: ${COMMON_API_URL:http://apis.data.go.kr/B552657/HsptlAsembySearchService}
+    service-key: ${COMMON_API_SECRET:}
